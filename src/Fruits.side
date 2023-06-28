@@ -1,0 +1,139 @@
+{
+  "id": "f47a5c6b-fade-4dc0-b4c1-b38185beffc0",
+  "version": "2.0",
+  "name": "Fruits",
+  "url": "https://labasse.github.io",
+  "tests": [{
+    "id": "28f6abc4-046f-4fbf-9de8-e23c5b1196a2",
+    "name": "Calendrier - Janvier",
+    "commands": [{
+      "id": "5c5d2b46-875b-4ba0-938e-845f4900f0b8",
+      "comment": "",
+      "command": "open",
+      "target": "/fruits/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8b22f56b-553c-4231-a2da-b21ec3189a4b",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1280x720",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4c2b5b73-2c85-417f-9220-751dec0e95f2",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Calendrier",
+      "targets": [
+        ["linkText=Calendrier", "linkText"],
+        ["css=.nav-item:nth-child(4) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Calendrier')]", "xpath:link"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul/li[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'calendrier.html')]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Calendrier')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "83748baa-163f-4db4-911b-1bbd8722dcbf",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Janvier",
+      "targets": [
+        ["linkText=Janvier", "linkText"],
+        ["css=.nav > .nav-item:nth-child(1) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Janvier')]", "xpath:link"],
+        ["xpath=//div[@id='app']/main/div/div/ul/li/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[4]", "xpath:href"],
+        ["xpath=//main/div/div/ul/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Janvier')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "57b54c7b-f00c-480a-9b46-7480ccb292d3",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.list-group",
+      "targets": [
+        ["css=.list-group", "css:finder"],
+        ["xpath=//div[@id='app']/main/div/div/div/ul", "xpath:idRelative"],
+        ["xpath=//div/div/div/ul", "xpath:position"]
+      ],
+      "value": "Amande sèche\\nCitron\\nClémentine\\nKaki\\nKiwi\\nMandarine\\nOrange\\nPamplemousse\\nPhysalis\\nPoire\\nPomme"
+    }]
+  }, {
+    "id": "89f47d43-1a64-4f3b-839b-c448c31e62f1",
+    "name": "Calendrier - Août",
+    "commands": []
+  }, {
+    "id": "c4028abf-a8ed-40f8-8227-98cc544902c7",
+    "name": "Calendrier - Septembre",
+    "commands": [{
+      "id": "4c6cf848-3dee-4002-9999-5662a39588cf",
+      "comment": "",
+      "command": "open",
+      "target": "/fruits/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c2144416-ad32-4c39-a6be-d1baab6ae9f6",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1280x720",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e19eb799-0cb0-4079-a7c6-519d2abae810",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Calendrier",
+      "targets": [
+        ["linkText=Calendrier", "linkText"],
+        ["css=.nav-item:nth-child(4) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Calendrier')]", "xpath:link"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul/li[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'calendrier.html')]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Calendrier')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "71bf24d2-ee32-433a-9c47-0d7aa95c6f6c",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Janvier",
+      "targets": [
+        ["linkText=Janvier", "linkText"],
+        ["css=.nav > .nav-item:nth-child(1) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Janvier')]", "xpath:link"],
+        ["xpath=//div[@id='app']/main/div/div/ul/li/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[4]", "xpath:href"],
+        ["xpath=//main/div/div/ul/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Janvier')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "53508272-973f-4639-9775-d5e4de90eefb",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.list-group",
+      "targets": [
+        ["css=.list-group", "css:finder"],
+        ["xpath=//div[@id='app']/main/div/div/div/ul", "xpath:idRelative"],
+        ["xpath=//div/div/div/ul", "xpath:position"]
+      ],
+      "value": "Amande sèche\\nCitron\\nClémentine\\nKaki\\nKiwi\\nMandarine\\nOrange\\nPamplemousse\\nPhysalis\\nPoire\\nPomme"
+    }]
+  }],
+  "suites": [{
+    "id": "7a41862e-dcf1-40ab-b624-4d5e276278a2",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["28f6abc4-046f-4fbf-9de8-e23c5b1196a2"]
+  }],
+  "urls": ["https://labasse.github.io/"],
+  "plugins": []
+}
