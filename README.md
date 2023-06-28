@@ -1,10 +1,12 @@
-# Nom final de la formation
+# L'essentiel de Selenium
 
-Ce dossier Repository est lié au cours `Nom final de la formation`. Le cours entier est disponible sur [LinkedIn Learning][lil-course-url].
+Ce dossier Repository est lié au cours `L'essentiel de Selenium`. Le cours entier est disponible sur [LinkedIn Learning][lil-course-url].
 
-![Nom final de la formation][lil-thumbnail-url] 
+![L'essentiel de Selenium][lil-thumbnail-url] 
 
-DESCRIPTION DE LA FORMATION
+Pour les professionnel-les en charge de la qualité et/ou du développement d'un site ou d'une application Web, Selenium est l'outil essentiel pour automatiser les tests fonctionnels du projet. 
+
+En partant de zéro, sans prérequis en programmation, vous prendrez d'abord Selenium IDE en main. Pour les personnes qui ont des notions de Python, vous pourrez ensuite apprendre comment écrire des tests complets en considérant tous les cas de figure. Enfin, Selenium Grid et l'intégration continue répondront aux besoins des profils plus "devops".
 
 ## Instructions
 
@@ -20,21 +22,23 @@ La branche master correspond au code à la fin de la formation.
 ## Installation
 
 1. Pour utiliser ces fichiers d’exercice, vous avez besoin de : 
-   - [Liste des logiciels/dépendances utiles à la formation] 
+   - Selenium
+   - Visual Studio Code
+   - Java Runtime (optionnel)
 2. Clonez ce dossier Repository sur votre machine locale (Mac), CMD (Windows), ou sur un outil GUI tel que SourceTree. 
-3. [Instructions spécifiques au cours] 
+3. Suivez les procédures d'installation décrites dans la progression de la formation.
 
 
 ### Formateur
 
-**Nom du formateur** 
+**Sylvain LABASSE** 
 
  Retrouvez mes autres formations sur [LinkedIn Learning][lil-URL-trainer].
 
 [0]: # (Replace these placeholder URLs with actual course URLs)
 [lil-course-url]: https://www.linkedin.com
 [lil-thumbnail-url]: https:
-[lil-URL-trainer]: https://
+[lil-URL-trainer]: https://www.linkedin.com/learning/instructors/sylvain-labasse
 
 [1]: # (End of FR-Instruction ###############################################################################################)
 
