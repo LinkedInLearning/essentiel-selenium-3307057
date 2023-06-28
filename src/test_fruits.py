@@ -50,3 +50,8 @@ def test_recherche_raz():
     for i in range(5):
         recherche.send_keys(Keys.BACKSPACE)
     assert_nombre_cartes(11)
+
+def test_recherche_completion():
+    recherche = ecrire_recherche("abri")
+    # Attendre que le texte change
+    assert find_recherche().get_attribute("value") == "Abricot"
