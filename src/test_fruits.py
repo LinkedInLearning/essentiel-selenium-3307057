@@ -9,6 +9,9 @@ def setup_function():
 def teardown_function():
     driver.quit()
 
+def find_recherche():
+    return driver.find_element(By.CSS_SELECTOR, "input[type=search]")
+
 def test_init_titre():
     assert driver.title == "Salade de fruits"
 
@@ -21,5 +24,17 @@ def test_init_liste_complete():
     assert len(cartes) == 11
 
 def test_init_focus_recherche():
-    recherche = driver.find_element(By.CSS_SELECTOR, "input[type=search]")
+    recherche = find_recherche()
     assert recherche == driver.switch_to.active_element
+
+def test_recherche_fructueuse():
+    recherche = find_recherche()
+    pass
+
+def test_recherche_infructueuse():
+    recherche = find_recherche()
+    pass
+
+def test_recherche_raz():
+    recherche = find_recherche()
+    pass
