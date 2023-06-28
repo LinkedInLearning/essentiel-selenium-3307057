@@ -1,6 +1,8 @@
 from selenium.webdriver import Chrome
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as cond
 
 def setup_function():
     global driver
@@ -53,5 +55,8 @@ def test_recherche_raz():
 
 def test_recherche_completion():
     recherche = ecrire_recherche("abri")
-    # Attendre que le texte change
+    #WebDriverWait(driver, 6).until_not(cond.text_to_be_present_in_element_value(
+    #    (By.CSS_SELECTOR, "input[type=search]"), "abri"
+    #))
+    WebDriverWait(driver, 6).until(lambda d : recherche.get_attribute("value")!="abri")
     assert find_recherche().get_attribute("value") == "Abricot"
