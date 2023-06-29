@@ -3,22 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from os import path
-import pyperclip, json
-
-def glisser_deplacer_0_0():
-    ActionChains(driver).drag_and_drop(
-        driver.find_element(By.ID, "0-0"),
-        driver.find_element(By.ID, "canevas")
-    ).perform()
-
-def glisser_fruit(canevas, taille, id, x, y, zoom):
-    fruit = driver.find_element(By.ID, id)
-    dx = canevas.location['x'] + x - fruit.location['x']
-    dy = canevas.location['y'] + y - fruit.location['y']
-    ActionChains(driver)\
-        .drag_and_drop_by_offset(fruit, dx, dy)\
-        .send_keys_to_element(taille, Keys.HOME+Keys.ARROW_RIGHT*zoom)\
-        .perform()
+import pyperclip, json, portrait
 
 def _test_changement_de_taille(raccourci, valeur):
     taille = driver.find_element(By.ID, "taille")
@@ -26,10 +11,10 @@ def _test_changement_de_taille(raccourci, valeur):
     assert driver.find_element(By.ID, "valeur").text == str(valeur)
 
 def setup_function():
-    global driver
+    global driver, page
     driver = Chrome()
-    driver.get("https://labasse.github.io/fruits/portrait.html")
-
+    page = portrait.Page(driver, "https://labasse.github.io/fruits")
+    
 def teardown_function():
     driver.quit()
 
@@ -89,7 +74,7 @@ def test_coller_titre():
 
 def test_js_select():
     """ Test de la désélection javascript select(null) """
-    glisser_deplacer_0_0()
+    page.glisser_deplacer("0-0")
     driver.execute_script("select(null)")
     portrait = driver.find_elements(By.CSS_SELECTOR, "div.fruit")
     assert "cur" not in portrait[0].get_attribute("class")
@@ -97,7 +82,7 @@ def test_js_select():
 def test_lecture_donnees_javascript():
     """ Test du contenu de la variable fruit """
     driver.set_window_size(1280, 720)
-    glisser_deplacer_0_0()
+    page.glisser_deplacer("0-0")
     donnees_fruits = json.loads(driver.execute_script("return JSON.stringify(fruits)"))
     assert donnees_fruits == {
         "f1": {
@@ -114,11 +99,11 @@ def test_dessin_complexe():
     taille   = driver.find_element(By.ID, "taille")
     canevas  = driver.find_element(By.ID, "canevas")
 
-    glisser_fruit(canevas, taille, "4-2",  18,  68, 9)
-    glisser_fruit(canevas, taille, "2-0", 163, 203, 7)
-    glisser_fruit(canevas, taille, "1-2", 162, 269, 7)
-    glisser_fruit(canevas, taille, "1-3",  92, 145, 6)
-    glisser_fruit(canevas, taille, "1-3", 253, 145, 6)
+    page.glisser_fruit("4-2",  18,  68, 9)
+    page.glisser_fruit("2-0", 163, 203, 7)
+    page.glisser_fruit("1-2", 162, 269, 7)
+    page.glisser_fruit("1-3",  92, 145, 6)
+    page.glisser_fruit("1-3", 253, 145, 6)
     driver.execute_script("select(null)")
     driver.find_element(By.ID, "fond").send_keys(path.abspath("banner.jpg"))
-    driver.save_screenshot("dessin.png")
+    driver.save_screenshot("dessing.jpg")
