@@ -9,10 +9,15 @@ import json, math
 class Page:
     def __init__(self, driver: Chrome or Firefox or Edge, baseurl: str):
         """ Charge la page grâce au driver selenium en partant de l'url spécifié """
-        driver.get(f"{baseurl}/portrait.html")
         self.driver = driver
-        self.taille   = driver.find_element(By.ID, "taille")
-        self.canevas  = driver.find_element(By.ID, "canevas")
+        self.url_portrait = f"{baseurl}/portrait.html"
+        self.driver.get(self.url_portrait)
+        self._maj_cache()
+
+    def _maj_cache(self):
+        """ Met à jour les objets cherchés par avance ie. en cache """
+        self.taille   = self.driver.find_element(By.ID, "taille")
+        self.canevas  = self.driver.find_element(By.ID, "canevas")
 
     def glisser_deplacer(self, id: str) -> None:
         """ Déplace le fruit d'identifiant id au centre du portrait """
@@ -87,4 +92,7 @@ class Page:
             .move_by_offset(dx, dy)\
             .release()\
             .perform()
-            
+    
+    def recharger(self) -> None:
+        """ Charge ou rafrîchit la page """
+        pass

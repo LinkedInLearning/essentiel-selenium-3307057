@@ -89,3 +89,14 @@ def test_dessin_complexe():
     page.glisser_fruit("1-3", 253, 145, 6)
     page.deselectionner()
     driver.save_screenshot("dessin.png")
+
+def test_aller_retour_dessin_vide():
+    page.glisser_deplacer("0-0")
+    # Aller sur "https://labasse.github.io/fruits"
+    page.recharger() 
+    assert len(page.fruits_du_portrait()) == 0
+
+def test_rafraichir_dessin_vide():
+    page.glisser_deplacer("0-0")
+    page.recharger()
+    assert len(page.fruits_du_portrait()) == 0
