@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from os import path
-import pyperclip
+import pyperclip, json
 
 def glisser_deplacer_0_0():
     ActionChains(driver).drag_and_drop(
@@ -81,7 +81,7 @@ def test_coller_titre():
 def test_js_select():
     """ Test de la désélection javascript select(null) """
     glisser_deplacer_0_0()
-    # Appel en js de select(null)
+    driver.execute_script("select(null)")
     portrait = driver.find_elements(By.CSS_SELECTOR, "div.fruit")
     assert "cur" not in portrait[0].get_attribute("class")
 
@@ -89,5 +89,12 @@ def test_lecture_donnees_javascript():
     """ Test du contenu de la variable fruit """
     driver.set_window_size(1280, 720)
     glisser_deplacer_0_0()
-    # Récupération du contenu de fruit en json
-    # Assertion sur la valeur récupérée    
+    donnees_fruits = json.loads(driver.execute_script("return JSON.stringify(fruits)"))
+    assert donnees_fruits == {
+        "f1": {
+            "icone":"0-0",
+            "sprite":["0","0"],
+            "taille":2,
+            "x":167, "y":219
+        }
+    }    
