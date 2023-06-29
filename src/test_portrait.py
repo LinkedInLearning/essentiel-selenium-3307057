@@ -1,4 +1,4 @@
-from selenium.webdriver import Chrome
+from selenium.webdriver import Chrome, ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
@@ -50,12 +50,16 @@ def test_televersement_fond():
     assert "data:image/jpeg;base64" in driver.find_element(By.ID, "canevas").get_attribute("style")
 
 def test_glisser_deplacer_fruit_sur_canevas():
-    """ Test Glisser/Déplace le premier fruit de la palette sur le Canevas """
+    """ Test de Glisser/Déplace le premier fruit de la palette sur le Canevas """
     fruit   = driver.find_element(By.ID, "0-0")
     canevas = driver.find_element(By.ID, "canevas")
     
-    # Glisser/Déplacer
-    
+    actions = ActionChains(driver)
+#    actions.drag_and_drop(fruit, canevas).perform()
+    actions.drag_and_drop_by_offset(fruit,
+        canevas.rect['x'] + canevas.rect['width' ]/2 - fruit.location['x'], 
+        canevas.rect['y'] + canevas.rect['height']/2 - fruit.location['y']
+    ).perform()
     portrait = driver.find_elements(By.CSS_SELECTOR, "div.fruit")
     assert len(portrait)==1
     assert "cur" in portrait[0].get_attribute("class")
