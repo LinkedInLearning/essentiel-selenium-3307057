@@ -1,4 +1,4 @@
-from selenium.webdriver import Chrome
+from selenium.webdriver import Remote, ChromeOptions
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
@@ -6,7 +6,10 @@ from selenium.webdriver.support import expected_conditions as cond
 
 def setup_function():
     global driver
-    driver = Chrome()
+    driver = Remote(
+        command_executor="http://localhost:4444",
+        options=ChromeOptions()
+    )
     driver.get("https://labasse.github.io/fruits/")
     
 def teardown_function():
