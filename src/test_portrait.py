@@ -5,6 +5,12 @@ from selenium.webdriver.support.ui import Select
 from os import path
 import pyperclip
 
+def glisser_deplacer_0_0():
+    ActionChains(driver).drag_and_drop(
+        driver.find_element(By.ID, "0-0"),
+        driver.find_element(By.ID, "canevas")
+    ).perform()
+
 def _test_changement_de_taille(raccourci, valeur):
     taille = driver.find_element(By.ID, "taille")
     taille.send_keys(raccourci)
@@ -51,7 +57,7 @@ def test_televersement_fond():
     assert "data:image/jpeg;base64" in driver.find_element(By.ID, "canevas").get_attribute("style")
 
 def test_glisser_deplacer_fruit_sur_canevas():
-    """ Test de Glisser/Déplace le premier fruit de la palette sur le Canevas """
+    """ Glisser/Déplace le premier fruit de la palette sur le Canevas """
     fruit   = driver.find_element(By.ID, "0-0")
     canevas = driver.find_element(By.ID, "canevas")
     
@@ -71,3 +77,17 @@ def test_coller_titre():
     titre = driver.find_element(By.NAME, "titre")
     titre.send_keys(Keys.CONTROL, "v")
     assert titre.get_attribute('value') == "Hommage à Arcimboldo"
+
+def test_js_select():
+    """ Test de la désélection javascript select(null) """
+    glisser_deplacer_0_0()
+    # Appel en js de select(null)
+    portrait = driver.find_elements(By.CSS_SELECTOR, "div.fruit")
+    assert "cur" not in portrait[0].get_attribute("class")
+
+def test_lecture_donnees_javascript():
+    """ Test du contenu de la variable fruit """
+    driver.set_window_size(1280, 720)
+    glisser_deplacer_0_0()
+    # Récupération du contenu de fruit en json
+    # Assertion sur la valeur récupérée    
