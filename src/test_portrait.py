@@ -11,6 +11,15 @@ def glisser_deplacer_0_0():
         driver.find_element(By.ID, "canevas")
     ).perform()
 
+def glisser_fruit(canevas, taille, id, x, y, zoom):
+    fruit = driver.find_element(By.ID, id)
+    dx = canevas.location['x'] + x - fruit.location['x']
+    dy = canevas.location['y'] + y - fruit.location['y']
+    ActionChains(driver)\
+        .drag_and_drop_by_offset(fruit, dx, dy)\
+        .send_keys_to_element(taille, Keys.HOME+Keys.ARROW_RIGHT*zoom)\
+        .perform()
+
 def _test_changement_de_taille(raccourci, valeur):
     taille = driver.find_element(By.ID, "taille")
     taille.send_keys(raccourci)
@@ -98,3 +107,18 @@ def test_lecture_donnees_javascript():
             "x":167, "y":219
         }
     }    
+
+def test_dessin_complexe():
+    """ Test d'un dessin complexe avec capture du résultat """
+    driver.set_window_size(1280, 720)
+    taille   = driver.find_element(By.ID, "taille")
+    canevas  = driver.find_element(By.ID, "canevas")
+
+    glisser_fruit(canevas, taille, "4-2",  18,  68, 9)
+    glisser_fruit(canevas, taille, "2-0", 163, 203, 7)
+    glisser_fruit(canevas, taille, "1-2", 162, 269, 7)
+    glisser_fruit(canevas, taille, "1-3",  92, 145, 6)
+    glisser_fruit(canevas, taille, "1-3", 253, 145, 6)
+    driver.execute_script("select(null)")
+    driver.find_element(By.ID, "fond").send_keys(path.abspath("banner.jpg"))
+    # Capturer une copie d'écran
