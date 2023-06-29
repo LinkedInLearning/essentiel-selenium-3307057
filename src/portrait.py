@@ -11,8 +11,7 @@ class Page:
         """ Charge la page grâce au driver selenium en partant de l'url spécifié """
         self.driver = driver
         self.url_portrait = f"{baseurl}/portrait.html"
-        self.driver.get(self.url_portrait)
-        self._maj_cache()
+        self.recharger()
 
     def _maj_cache(self):
         """ Met à jour les objets cherchés par avance ie. en cache """
@@ -95,4 +94,8 @@ class Page:
     
     def recharger(self) -> None:
         """ Charge ou rafrîchit la page """
-        pass
+        if(self.driver.current_url == self.url_portrait):
+            self.driver.refresh()
+        else:
+            self.driver.get(self.url_portrait)
+        self._maj_cache()

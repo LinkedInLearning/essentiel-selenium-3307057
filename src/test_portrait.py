@@ -92,7 +92,7 @@ def test_dessin_complexe():
 
 def test_aller_retour_dessin_vide():
     page.glisser_deplacer("0-0")
-    # Aller sur "https://labasse.github.io/fruits"
+    driver.get("https://labasse.github.io/fruits")
     page.recharger() 
     assert len(page.fruits_du_portrait()) == 0
 
