@@ -102,6 +102,6 @@ def test_rafraichir_dessin_vide():
     assert len(page.fruits_du_portrait()) == 0
 
 def test_cookie_taille():
-    # Créer un cookie avec 'taille' = 3
+    driver.add_cookie({"name":"taille", "value": "3"})
     page.recharger()
     assert page.get_texte_taille()=="3"
