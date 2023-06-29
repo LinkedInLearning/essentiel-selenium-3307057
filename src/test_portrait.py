@@ -17,6 +17,7 @@ def teardown_function():
     driver.quit()
 
 def test_selection_partie():
+    """ Test de la sélection d'Œil """
     partie = Select(driver.find_element(By.ID, "partie"))
     
     partie.select_by_visible_text("Œil")
@@ -40,3 +41,9 @@ def test_minimum_taille():
 def test_maximum_taille():
     """ Test du passage à la valeur maximale: 9 """
     _test_changement_de_taille(Keys.END, 9)
+
+def test_televersement_fond():
+    """ Test du téléversement d'une image de fond """
+    fond = driver.find_element(By.ID, "fond")
+    # Sélectionner banner.jpg
+    # Vérifier le changement du style de fond
