@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from os import path
+import pyperclip
 
 def _test_changement_de_taille(raccourci, valeur):
     taille = driver.find_element(By.ID, "taille")
@@ -66,7 +67,7 @@ def test_glisser_deplacer_fruit_sur_canevas():
 
 def test_coller_titre():
     """ Test de collage du presse-papier dans titre """
-    # Préparer un texte dans le presse-papier "Hommage à Arcimboldo"
+    pyperclip.copy("Hommage à Arcimboldo")
     titre = driver.find_element(By.NAME, "titre")
-    # Coller le contenu du presse-papier
+    titre.send_keys(Keys.CONTROL, "v")
     assert titre.get_attribute('value') == "Hommage à Arcimboldo"
