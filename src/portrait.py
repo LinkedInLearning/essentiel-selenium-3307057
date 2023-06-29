@@ -81,7 +81,10 @@ class Page:
         """ Décale le fond du portrait à la souris de la distance spécifiée par dx et dy """
         coin_x = self._coin(self.canevas.rect['width' ], dx)
         coin_y = self._coin(self.canevas.rect['height'], dy)
-        # Cliquer et garder enfoncé sur un coin
-        # Déplacer sur dx et dy
-        # Relacher
+        ActionChains(self.driver)\
+            .move_to_element_with_offset(self.canevas, coin_x, coin_y)\
+            .click_and_hold(None)\
+            .move_by_offset(dx, dy)\
+            .release()\
+            .perform()
             
