@@ -63,3 +63,10 @@ def test_glisser_deplacer_fruit_sur_canevas():
     portrait = driver.find_elements(By.CSS_SELECTOR, "div.fruit")
     assert len(portrait)==1
     assert "cur" in portrait[0].get_attribute("class")
+
+def test_coller_titre():
+    """ Test de collage du presse-papier dans titre """
+    # Préparer un texte dans le presse-papier "Hommage à Arcimboldo"
+    titre = driver.find_element(By.NAME, "titre")
+    # Coller le contenu du presse-papier
+    assert titre.get_attribute('value') == "Hommage à Arcimboldo"
