@@ -1,4 +1,4 @@
-from selenium.webdriver import Remote, ChromeOptions
+from selenium.webdriver import Chrome
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
@@ -6,10 +6,7 @@ from selenium.webdriver.support import expected_conditions as cond
 
 def setup_function():
     global driver
-    driver = Remote(
-        command_executor="http://localhost:4444",
-        options=ChromeOptions()
-    )
+    driver = Chrome()
     driver.get("https://labasse.github.io/fruits/")
     
 def teardown_function():
@@ -63,3 +60,7 @@ def test_recherche_completion():
     #))
     WebDriverWait(driver, 6).until(lambda d : recherche.get_attribute("value")!="abri")
     assert find_recherche().get_attribute("value") == "Abricot"
+
+def test_menu_cuisiner():
+    driver.find_element(By.LINK_TEXT, "Cuisiner").click()
+    assert "#cuisiner" in driver.current_url
