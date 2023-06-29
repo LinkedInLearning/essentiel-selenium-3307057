@@ -48,3 +48,14 @@ def test_televersement_fond():
     fond = driver.find_element(By.ID, "fond")
     fond.send_keys(path.abspath("banner.jpg"))
     assert "data:image/jpeg;base64" in driver.find_element(By.ID, "canevas").get_attribute("style")
+
+def test_glisser_deplacer_fruit_sur_canevas():
+    """ Test Glisser/Déplace le premier fruit de la palette sur le Canevas """
+    fruit   = driver.find_element(By.ID, "0-0")
+    canevas = driver.find_element(By.ID, "canevas")
+    
+    # Glisser/Déplacer
+    
+    portrait = driver.find_elements(By.CSS_SELECTOR, "div.fruit")
+    assert len(portrait)==1
+    assert "cur" in portrait[0].get_attribute("class")
