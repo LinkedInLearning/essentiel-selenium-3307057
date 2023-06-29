@@ -1,4 +1,5 @@
-from selenium.webdriver import Chrome
+from selenium.webdriver import Chrome,Edge
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
@@ -62,5 +63,12 @@ def test_recherche_completion():
     assert find_recherche().get_attribute("value") == "Abricot"
 
 def test_menu_cuisiner():
-    driver.find_element(By.LINK_TEXT, "Cuisiner").click()
+    try:
+        driver.find_element(By.LINK_TEXT, "Cuisiner").click()
+    except NoSuchElementException:
+        # Pour Edge - écran restreint
+        driver.find_element(By.CLASS_NAME, "navbar-toggler").click()
+        WebDriverWait(driver, 10)\
+            .until(cond.element_to_be_clickable((By.LINK_TEXT, "Cuisiner")))\
+            .click()
     assert "#cuisiner" in driver.current_url
