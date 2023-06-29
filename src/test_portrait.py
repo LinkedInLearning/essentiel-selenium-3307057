@@ -100,3 +100,8 @@ def test_rafraichir_dessin_vide():
     page.glisser_deplacer("0-0")
     page.recharger()
     assert len(page.fruits_du_portrait()) == 0
+
+def test_cookie_taille():
+    # Créer un cookie avec 'taille' = 3
+    page.recharger()
+    assert page.get_texte_taille()=="3"
