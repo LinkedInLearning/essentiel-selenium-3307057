@@ -1,4 +1,4 @@
-from selenium.webdriver import Chrome
+from selenium.webdriver import Chrome, ChromeOptions
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -7,7 +7,11 @@ from selenium.webdriver.support import expected_conditions as cond
 
 def setup_function():
     global driver
-    driver = Chrome()
+    options=ChromeOptions()
+    options.add_experimental_option("mobileEmulation", {
+        "deviceName": "Pixel 5"
+    })
+    driver = Chrome(options=options)
     driver.get("https://labasse.github.io/fruits/")
     
 def teardown_function():
@@ -33,7 +37,7 @@ def test_init_chercher_actif():
     try:
         chercher = driver.find_element(By.LINK_TEXT, "Chercher")
     except NoSuchElementException:
-        # Pour Edge - écran restreint
+        # Pour Edge et test mobile - écran restreint
         driver.find_element(By.CLASS_NAME, "navbar-toggler").click()
         chercher = WebDriverWait(driver, 10)\
             .until(cond.element_to_be_clickable((By.LINK_TEXT, "Chercher")))
@@ -72,7 +76,7 @@ def test_menu_cuisiner():
     try:
         driver.find_element(By.LINK_TEXT, "Cuisiner").click()
     except NoSuchElementException:
-        # Pour Edge - écran restreint
+        # Pour Edge et test mobile - écran restreint
         driver.find_element(By.CLASS_NAME, "navbar-toggler").click()
         WebDriverWait(driver, 10)\
             .until(cond.element_to_be_clickable((By.LINK_TEXT, "Cuisiner")))\
