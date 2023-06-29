@@ -1,20 +1,32 @@
-from selenium.webdriver import Chrome, ChromeOptions
-from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver import Chrome, ChromeOptions, Edge, EdgeOptions, Remote
+from selenium.common.exceptions import NoSuchElementException, NoSuchDriverException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as cond
+import pytest
 
-def setup_function():
+@pytest.fixture(autouse=True)
+def setup_driver(request):
     global driver
-    options=ChromeOptions()
-    options.add_experimental_option("mobileEmulation", {
-        "deviceName": "Pixel 5"
-    })
-    driver = Chrome(options=options)
+
+    config = request.config
+    conf_driver = config.getini("selenium_driver")
+    conf_hub = config.getini("selenium_hub")
+    if(conf_driver == "chrome"):
+        conf_mobile = config.getini("selenium_mobile")
+        options=ChromeOptions()
+        if(conf_mobile != ""):
+            options.add_experimental_option("mobileEmulation", {
+                "deviceName": conf_mobile
+            })
+        driver = Chrome(options=options) if conf_hub == "" else Remote(conf_hub, options=options)
+    elif(conf_driver == "edge"):
+        driver = Edge() if conf_hub == "" else Remote(conf_hub, options=EdgeOptions())
+    else:
+        raise NoSuchDriverException(f"Driver {conf_driver} inconnu")
     driver.get("https://labasse.github.io/fruits/")
-    
-def teardown_function():
+    yield
     driver.quit()
 
 def find_recherche():
