@@ -1,4 +1,4 @@
-from selenium.webdriver import Chrome,Edge
+from selenium.webdriver import Chrome
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -30,7 +30,13 @@ def test_init_titre():
     assert driver.title == "Salade de fruits"
 
 def test_init_chercher_actif():
-    chercher = driver.find_element(By.LINK_TEXT, "Chercher")
+    try:
+        chercher = driver.find_element(By.LINK_TEXT, "Chercher")
+    except NoSuchElementException:
+        # Pour Edge - écran restreint
+        driver.find_element(By.CLASS_NAME, "navbar-toggler").click()
+        chercher = WebDriverWait(driver, 10)\
+            .until(cond.element_to_be_clickable((By.LINK_TEXT, "Chercher")))
     assert "active" in chercher.get_attribute("class")
 
 def test_init_liste_complete():
