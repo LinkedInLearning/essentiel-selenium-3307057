@@ -2,6 +2,7 @@ from selenium.webdriver import Chrome
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
+from os import path
 
 def _test_changement_de_taille(raccourci, valeur):
     taille = driver.find_element(By.ID, "taille")
@@ -45,5 +46,5 @@ def test_maximum_taille():
 def test_televersement_fond():
     """ Test du téléversement d'une image de fond """
     fond = driver.find_element(By.ID, "fond")
-    # Sélectionner banner.jpg
-    # Vérifier le changement du style de fond
+    fond.send_keys(path.abspath("banner.jpg"))
+    assert "data:image/jpeg;base64" in driver.find_element(By.ID, "canevas").get_attribute("style")
