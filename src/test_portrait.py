@@ -121,4 +121,4 @@ def test_dessin_complexe():
     glisser_fruit(canevas, taille, "1-3", 253, 145, 6)
     driver.execute_script("select(null)")
     driver.find_element(By.ID, "fond").send_keys(path.abspath("banner.jpg"))
-    # Capturer une copie d'écran
+    driver.save_screenshot("dessin.png")
