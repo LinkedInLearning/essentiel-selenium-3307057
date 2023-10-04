@@ -37,7 +37,7 @@ La branche master correspond au code à la fin de la formation.
 
 [0]: # (Replace these placeholder URLs with actual course URLs)
 [lil-course-url]: https://www.linkedin.com/learning/l-essentiel-de-selenium/bienvenue-dans-l-essentiel-de-selenium
-[lil-thumbnail-url]: https://media.licdn.com/dms/image/D560DAQGjaJVzX_q0kw/learning-public-crop_675_1200/0/1693400305507?e=1694008800&v=beta&t=wxvz4afwpRmfpQZZYaYCSgwEmc3hUxVtJn-CQ4NrzxM
+[lil-thumbnail-url]: https://media.licdn.com/dms/image/D560DAQGjaJVzX_q0kw/learning-public-crop_675_1200/0/1693400305507?e=2147483647&v=beta&t=WqIEV-HiFVD5I5bTIl1sS7nLSx9WvcDS1KUGS5vVdGI
 [lil-URL-trainer]: https://www.linkedin.com/learning/instructors/sylvain-labasse
 
 [1]: # (End of FR-Instruction ###############################################################################################)
