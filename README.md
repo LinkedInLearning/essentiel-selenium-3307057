@@ -5,8 +5,9 @@ Ce dossier Repository est lié au cours `L'essentiel de Selenium`. Le cours enti
 ![L'essentiel de Selenium][lil-thumbnail-url] 
 
 Pour les professionnel-les en charge de la qualité et/ou du développement d'un site ou d'une application Web, Selenium est l'outil essentiel pour automatiser les tests fonctionnels du projet. 
-
 En partant de zéro, sans prérequis en programmation, vous prendrez d'abord Selenium IDE en main. Pour les personnes qui ont des notions de Python, vous pourrez ensuite apprendre comment écrire des tests complets en considérant tous les cas de figure. Enfin, Selenium Grid et l'intégration continue répondront aux besoins des profils plus "devops".
+
+La meilleure façon d'apprendre un langage est de l'utiliser dans la pratique. C'est pourquoi ce cours est intégré à GitHub Codespaces, un environnement de développement instantané « dans le nuage » qui offre toutes les fonctionnalités de votre IDE préféré sans nécessiter de configuration sur une machine locale. Avec Codespaces, vous pouvez vous exercer à partir de n'importe quelle machine, à tout moment, tout en utilisant un outil que vous êtes susceptible de rencontrer sur votre lieu de travail. 
 
 ## Instructions
 
